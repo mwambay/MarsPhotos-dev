@@ -20,6 +20,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -34,10 +35,7 @@ import androidx.compose.ui.unit.dp
 import com.example.marsphotos.R
 import com.example.marsphotos.ui.theme.MarsPhotosTheme
 
-import androidx.compose.foundation.layout.fillMaxSize
-
 @Composable
-
 fun HomeScreen(
     marsUiState: MarsUiState,
     modifier: Modifier = Modifier,
@@ -52,6 +50,9 @@ fun HomeScreen(
     }
 }
 
+/**
+ * The home screen displaying the loading message.
+ */
 @Composable
 fun LoadingScreen(modifier: Modifier = Modifier) {
     Image(
@@ -61,6 +62,9 @@ fun LoadingScreen(modifier: Modifier = Modifier) {
     )
 }
 
+/**
+ * The home screen displaying error message with re-attempt button.
+ */
 @Composable
 fun ErrorScreen(modifier: Modifier = Modifier) {
     Column(
@@ -90,8 +94,24 @@ fun ResultScreen(photos: String, modifier: Modifier = Modifier) {
 
 @Preview(showBackground = true)
 @Composable
-fun ResultScreenPreview() {
+fun LoadingScreenPreview() {
     MarsPhotosTheme {
-        ResultScreen(stringResource(R.string.placeholder_result))
+        LoadingScreen()
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun ErrorScreenPreview() {
+    MarsPhotosTheme {
+        ErrorScreen()
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PhotosGridScreenPreview() {
+    MarsPhotosTheme {
+        ResultScreen(stringResource(R.string.placeholder_success))
     }
 }
